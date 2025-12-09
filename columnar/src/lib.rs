@@ -1,3 +1,4 @@
+#![feature(let_chains)]
 //! # Tantivy-Columnar
 //!
 //! `tantivy-columnar`provides a columnar storage for tantivy.
