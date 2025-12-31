@@ -174,9 +174,10 @@ impl<T: Send + Sync + PartialOrd + Copy + Debug + 'static> DocSet for RangeDocSe
         }
         if target > self.next_fetch_start {
             self.next_fetch_start = target;
+            self.loaded_docs.get_cleared_data();
+            self.fetch_block();
         }
         let mut doc = self.doc();
-        debug_assert!(doc <= target);
         while doc < target {
             doc = self.advance();
         }
